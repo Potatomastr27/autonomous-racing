@@ -9,6 +9,20 @@
 - Gazebo for ros2 humble
 - Rviz2
 
+## Description
+This is a package designed to autonomously drive an ackermann car around a race track made up of traffic cones. 
+
+### System Features:
+- The car utilizes a 180 degree lidar sensor with a 30m range on the front to automatically find the cones in the environment.
+- The system then sorts the cones into pairs and calculates the midpoint of each pair.
+- The pairs are used as the control points for a cubic spline which is used to smoothly interpolate between them.
+- The spline is used to generate the next goal for the vehicle controller so it can calculate the steering angle similar to the pure pursuit algorithm
+- A config file is provided so you can try changing some of the values in there to see how the system reacts
+- Some unit tests are used to validate certain aspects of the system
+- The control module will output where it thinks the cones are (orange cylinders) and where the midpoints of the track are (red cubes).
+
+![rviz simulator moving](media/moving_sim.png)
+
 ## Installation
 Install ros2 humble following this guide: https://docs.ros.org/en/humble/Installation.html 
 
