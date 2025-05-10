@@ -77,7 +77,7 @@ TEST(SplineTest, StartPosition){
     // Use laser processor to find cones
     vector<Point> cones = lsr.findCones(); // Find cones with default parameters
     // create pathfinder with lookahead of 2 so it finds all possible goals
-    PathFinder pathfinder = PathFinder(true, 2, 6.5, 12.0, 15.0, true, 3.5, 0.05);
+    PathFinder pathfinder = PathFinder(true, false, 2, 6.5, 12.0, 15.0, true, 3.5, 0.05);
 
     // Setup the pathfinder with the required info
     pathfinder.addData(cones, *odo_msg);

@@ -72,7 +72,7 @@ TEST(IsGoalWithinCones, StartPosition){
     // Use laser processor to find cones
     vector<Point> cones = lsr.findCones(); // Find cones with default parameters
     
-    PathFinder pathfinder = PathFinder(false, 2, 6.5, 12.0, 15.0, false, 3.5, 0.05); // create pathfinder with default parameters
+    PathFinder pathfinder = PathFinder(false, false, 2, 6.5, 12.0, 15.0, false, 3.5, 0.05); // create pathfinder with default parameters
 
     // Setup the pathfinder with the required info
     pathfinder.addData(cones, *odo_msg);
