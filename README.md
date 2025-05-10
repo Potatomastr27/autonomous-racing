@@ -3,7 +3,7 @@
 ## Dependancies
 - Ubuntu 22.04
 - ROS2 Humble
-- pfms-support (Needs specific commit, follow below instructions)
+- 41012/pfms-support (included in the repo)
 
 ## Simulation Dependancies
 - Gazebo for ros2 humble
@@ -39,16 +39,40 @@ colcon build --symlink-install
 source ~/ros2_ws/install/setup.bash
 ```
 
-## Using
-Once installed you can run the control + simulator using:
+## First Launch
+Run:
+```bash
+ros2 launch autonomous-racing start.launch.py gui:=true
+```
+This will open up rviz and launch gazebo.
+
+While this is happening you will see a car with no textures on rviz (this is fine).
+
+Gazebo will start downloading models in the background, you will know it is done when the gazebo gui opens up and you can see the race track.
+
+Once this happens you can relaunch the program and you should see something like this on rviz:
+
+![rviz simulator](media/idle_sim.png)
+
+## How to use
+You can run the control module + simulator using:
 ```bash
 ros2 launch autonomous-racing start.launch.py
 ```
+You can add an option to open a gazebo gui as well so that you can edit the simulation environment
+```bash
+ros2 launch autonomous-racing start.launch.py gui:=true
+```
+You can run the control module individually with:
+```bash
+ros2 launch autonomous-racing main.launch.py
+```
 
-Then once it's running you should see rviz come up with with a car like this:
-![rviz simulator](media/idle_sim.png)
-
-Once you want it to start driving run the command:
+Once you want it to start driving run this command in a different terminal:
 ```bash
 ros2 service call /orange/mission std_srvs/srv/SetBool "{data: true}"
 ```
+
+You should see the car start moving like so:
+
+![rviz simulator moving](media/moving_sim.png)
