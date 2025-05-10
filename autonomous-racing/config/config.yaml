@@ -1,0 +1,49 @@
+mission:
+  ros__parameters:
+
+    #Pathfinding Parameters
+
+    # Whether or not to automatically drive around the track using cones or to use user defined goals
+    _advanced: True
+    _repeat: True
+    # The number of goals the system will attempt to find ahead of its current position
+    # Must be a minimum of 2 for spline smoothing to be active
+    _lookAhead: 3
+
+    # The high and low tolerance of the distance between cones in a pair
+    # The distance between two cones in a left-right pair
+    # If outside this tolerance the system will not detect that pair
+    _coneDistLow: 6.5
+    _coneDistHigh: 12.0
+    # The max distance between successive goals
+    _maxGoalDist: 15.0
+
+
+    ## Smooth Control Parameters
+    ## Uses cubic splines to acomplish pure pursuit allowing smoother control of the car
+    _smoothControl: True # Enables smooth control
+    _pursuitDistance: 4.0 # The distance to the calculated goal
+    _splineResolution: 0.05 # The resultion when checking the spline
+
+controller:
+  ros__parameters:
+
+    #Audi Control Parameters
+    _speed: 0.1 # The base throttle of the car
+    _goalTolerance: 0.5 # The distance at which the car will believe it is on the goal
+
+cone_finder:
+  ros__parameters:
+
+    ## Cone finding parameters
+    _coneDiam: 0.4 # The diameter of all cone
+    _minConePoints: 2 # The minimum number of readings to be considered a cone
+    _conePointDistMin: 0.3 # The distance between readings for them to be considered attached
+    _dupeConeDist: 0.8 # The distance between cones for them to be considered the same cone
+
+    _odoScanDist: 3.7 # The distance between the odometry pose reading and scanner pose    
+    
+    ## EStop box size
+    ## Car will stop if any reading is within this box
+    _estopCheckHeight: 2.5 # The Height of the estop check box
+    _estopCheckWidth: 2.2 # The width of the estop check box
